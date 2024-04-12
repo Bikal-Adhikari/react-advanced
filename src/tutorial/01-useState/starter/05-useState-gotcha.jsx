@@ -10,12 +10,18 @@ const UseStateGotcha = () => {
     // // that relies on the latest value
     // // it will be wrong !!!
 
-    setValue((currentState) => {
-      // must return otherwise undefined
-      // below is the latest/current state value
-      const newState = currentState + 1;
-      return newState;
-    });
+    // setValue((currentState) => {
+    //   // must return otherwise undefined
+    //   // below is the latest/current state value
+    //   const newState = currentState + 1;
+    //   return newState;
+    // });
+    setTimeout(() => {
+      console.log("clicked the button");
+      setValue((currentState) => {
+        return currentState + 1;
+      });
+    }, 3000);
   };
   return (
     <div>
