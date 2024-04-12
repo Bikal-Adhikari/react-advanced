@@ -1,13 +1,19 @@
 import { useState } from "react";
 
 const UseStateObject = () => {
-  const [name, setName] = useState("peter");
-  const [age, setAge] = useState(24);
-  const [hobby, setHobby] = useState("read books");
+  const [person, setPerson] = useState({
+    name: "peter",
+    age: 24,
+    hobby: "read books",
+  });
+  // const [name, setName] = useState("peter");
+  // const [age, setAge] = useState(24);
+  // const [hobby, setHobby] = useState("read books");
   const displayPerson = () => {
-    setName("john");
-    setAge(28);
-    setHobby("scream at the computer");
+    setPerson({ name: "john", age: 28, hobby: "scream at the computer" });
+    // setName("john");
+    // setAge(28);
+    // setHobby("scream at the computer");
   };
   return (
     <>
