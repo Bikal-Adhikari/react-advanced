@@ -1,13 +1,14 @@
 import { useState } from "react";
 
 import "./App.css";
+import { useGlobalContext } from "./context";
 
 function App() {
   const [count, setCount] = useState(0);
-
+  const { name } = useGlobalContext();
+  console.log(name);
   return (
-    <>
-      <div></div>
+    <div className="App">
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -20,7 +21,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-    </>
+    </div>
   );
 }
 
