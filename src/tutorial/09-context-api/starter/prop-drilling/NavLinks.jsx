@@ -1,20 +1,18 @@
-import React from "react";
-import UserContainer from "./UserContainer";
+import UserContainer from './UserContainer';
 
 const NavLinks = ({ user, logout }) => {
   return (
-    <div className="nav-container">
-      <ul className="nav-links">
+    <div className='nav-container'>
+      <ul className='nav-links'>
         <li>
-          <a href="#">Home</a>
+          <a href='#'>home</a>
         </li>
         <li>
-          <a href="#">About</a>
+          <a href='#'>about</a>
         </li>
       </ul>
       <UserContainer user={user} logout={logout} />
     </div>
   );
 };
-
 export default NavLinks;
