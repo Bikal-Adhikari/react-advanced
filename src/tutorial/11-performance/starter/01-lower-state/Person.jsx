@@ -1,10 +1,6 @@
-import { useEffect } from 'react';
-
 const Person = ({ name }) => {
-  console.log('render');
-  // useEffect(() => {
-  //   console.log('unfortunately does not fix the issue');
-  // }, []);
+  console.log("render");
+
   return (
     <div>
       <h4>{name}</h4>
