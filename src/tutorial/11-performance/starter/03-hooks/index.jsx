@@ -1,46 +1,34 @@
-import { useState } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { data } from "../../../../data";
 import List from "./List";
-const LowerStateChallenge = () => {
+import slowFunction from "./slowFunction";
+const LowerState = () => {
   const [people, setPeople] = useState(data);
-  const [name, setName] = useState("");
+  const [count, setCount] = useState(0);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name) {
-      alert("Please Provide Name Value");
-      return;
-    }
-    addPerson();
-    setName("");
-  };
-  const addPerson = () => {
-    const fakeId = Date.now();
-    const newPerson = { id: fakeId, name };
-    setPeople([...people, newPerson]);
-  };
+  const value = useMemo(() => slowFunction(), []);
+  console.log(value);
+
+  const removePerson = useCallback(
+    (id) => {
+      console.log(people);
+      const newPeople = people.filter((person) => person.id !== id);
+      setPeople(newPeople);
+    },
+    [people]
+  );
+
   return (
     <section>
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="form-row">
-          <label htmlFor="name" className="form-label">
-            name
-          </label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            className="form-input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-        </div>
-        <button className="btn btn-block" type="submit">
-          submit
-        </button>
-      </form>
-      <List people={people} />
+      <button
+        className="btn"
+        onClick={() => setCount(count + 1)}
+        style={{ marginBottom: "1rem" }}
+      >
+        count {count}
+      </button>
+      <List people={people} removePerson={removePerson} />
     </section>
   );
 };
-export default LowerStateChallenge;
+export default LowerState;
